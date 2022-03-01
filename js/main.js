@@ -26,9 +26,12 @@ const displayResults = (phones) => {
     //clearing previous results
     resultDiv.textContent = '';
 
+    // limiting search results to 20
+    const limitedPhones = phones.slice(0, 20);
     
+    // console.log(limitedPhones);
 
-    phones.forEach((phone) => {
+    limitedPhones.forEach((phone) => {
         console.log(phone.phone_name);
         const div = document.createElement('div');
 
