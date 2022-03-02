@@ -25,15 +25,33 @@ const displayResults = (phones) => {
 
     //clearing previous results
     resultDiv.textContent = '';
+  
+  // clearing previous details
 
+    const detailsDiv = document.getElementById("details-div");
+    detailsDiv.textContent = ''; 
+ 
     // limiting search results to 20
     const limitedPhones = phones.slice(0, 20);
     
     // console.log(limitedPhones);
   
   
-    
+  if (phones.length === 0) {
+    console.log('No phones found');
 
+    const noResultDiv = document.getElementById('no-result')
+    
+    const div = document.createElement('div');
+
+    div.innerHTML = `
+    <h5 class="bg-primary text-center text-white w-50 mx-auto lh-lg p-2 rounded shadow-lg opacity-75">No phones found :(</h5>
+    `;
+
+    noResultDiv.appendChild(div);
+
+    }
+    else{
     limitedPhones.forEach((phone) => {
         // console.log(phone.phone_name);
 
@@ -62,6 +80,7 @@ const displayResults = (phones) => {
         resultDiv.appendChild(div);
 
     })
+  }
 
 
 }
