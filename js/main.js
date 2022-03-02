@@ -20,7 +20,7 @@ const searchText = () => {
 // for displaying results
 const displayResults = (phones) => {
     
-    console.log(phones);
+    // console.log(phones);
     const resultDiv = document.getElementById('result-div');
 
     //clearing previous results
@@ -111,7 +111,7 @@ const displayDetails = phoneInfo => {
 
   console.log(phoneInfo);
   const phone = phoneInfo.data;
-  // console.log(phone.mainFeatures.sensors);
+  console.log(phone);
 
   //sensors
   const sensors = phone.mainFeatures.sensors;
@@ -164,10 +164,28 @@ const displayDetails = phoneInfo => {
               <p class="card-text">More Details</p>
               <span class="text-decoration-underline">Sensors</span> : ${allSensors ?allSensors : 'No detail'}
               <br>
+              <br>
+              <span class="text-decoration-underline">Others</span>
+              <br>
+              <br>
+              
+              <span class="text-decoration-underline">WLAN</span> : ${phone.others?.WLAN ?phone.others.WLAN : 'No detail'}
+              <br>
+              <span class="text-decoration-underline">Bluetooth</span> : ${phone.others?.Bluetooth ?phone.others.Bluetooth : 'No detail'}
+              <br>
+              <span class="text-decoration-underline">GPS</span> : ${phone.others?.GPS ?phone.others.GPS : 'No detail'}
+              <br>
+              <span class="text-decoration-underline">NFC</span> : ${phone.others?.NFC ?phone.others.NFC : 'No detail'}
+              <br>
+              <span class="text-decoration-underline">Radio</span> : ${phone.others?.Radio ?phone.others.Radio : 'No detail'}
+              <br>
+              <span class="text-decoration-underline">USB</span> : ${phone.others?.USB ?phone.others.USB : 'No detail'}
+              <br>
+              
 
 
               
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              
              </p>
             
           </div>
