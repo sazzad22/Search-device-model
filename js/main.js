@@ -43,13 +43,19 @@ const displayResults = (phones) => {
   if (phones.length === 0) {
     console.log('No phones found');
 
-    
+
+    //clearing previous no result div
+    noResultDiv.textContent = '';
     
     const div = document.createElement('div');
 
     div.innerHTML = `
     <h5 class="bg-primary text-center text-white w-50 mx-auto lh-lg p-2 rounded shadow-lg opacity-75">No phones found :(</h5>
     `;
+    
+    
+    
+
 
     noResultDiv.appendChild(div);
 
@@ -71,7 +77,7 @@ const displayResults = (phones) => {
         div.innerHTML = `
         <div class="col p-3">
           <div class="card p-4 shadow">
-            <img src="${phone.image}" class="card-img-top p-5" alt="...">
+            <img src="${phone.image}" class="card-img-top p-5 " alt="...">
             <div class="card-body">
               
               <h6 class="card-title"> ${phone.phone_name}</h6>
@@ -165,7 +171,7 @@ const displayDetails = phoneInfo => {
               <span class="text-decoration-underline">Sensors</span> : ${allSensors ?allSensors : 'No detail'}
               <br>
               <br>
-              <span class="text-decoration-underline">Others</span>
+              <span >Others</span>
               <br>
               <br>
               
