@@ -36,11 +36,14 @@ const displayResults = (phones) => {
     
     // console.log(limitedPhones);
   
+    //no Result div
+    const noResultDiv = document.getElementById('no-result');
+  
   
   if (phones.length === 0) {
     console.log('No phones found');
 
-    const noResultDiv = document.getElementById('no-result')
+    
     
     const div = document.createElement('div');
 
@@ -51,7 +54,11 @@ const displayResults = (phones) => {
     noResultDiv.appendChild(div);
 
     }
-    else{
+  else {
+    //clearing No result div
+
+    noResultDiv.textContent = '';
+
     limitedPhones.forEach((phone) => {
         // console.log(phone.phone_name);
 
@@ -94,15 +101,17 @@ const loadDetails = phoneId => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
     fetch(url)
         .then(response => response.json())
-        .then(datas => displayDetails(datas.data))
+        .then(datas => displayDetails(datas))
     
 
 }
 
 // for displaying details
-const displayDetails = phone => {
+const displayDetails = phoneInfo => {
 
-    console.log(phone);
+  
+  const phone = phoneInfo.data;
+  console.log(phone);
 
     const detailsDiv = document.getElementById("details-div");
 
@@ -134,14 +143,19 @@ const displayDetails = phone => {
             <p class="card-text">
               <span class="text-decoration-underline">Release Date</span> : ${phone.releaseDate ?phone.releaseDate : 'Release Date Not Found'}
               <br>
-              <span class="text-decoration-underline">Display</span> : is a wider card
+              <span class="text-decoration-underline">Display</span> : ${phone.mainFeatures.displaySize ?phone.mainFeatures.displaySize : 'No detail'}
               <br>
-              <span class="text-decoration-underline">Chipset</span> : is a wider card
+              <span class="text-decoration-underline">Chipset</span> : ${phone.mainFeatures.chipSet ?phone.mainFeatures.chipSet : 'No detail'}
               <br>
-              <span class="text-decoration-underline">Storage</span> : is a wider card
+              <span class="text-decoration-underline">Storage</span> : ${phone.mainFeatures.storage ?phone.mainFeatures.storage : 'No detail'}
               <br>
-              <span class="text-decoration-underline">Memory</span> : is a wider card
+              <span class="text-decoration-underline">Memory</span> : ${phone.mainFeatures.memory ?phone.mainFeatures.memory : 'No detail'}
               <br>
+              
+              <p class="card-text" p-5>More Details</p>
+              <br>
+
+
               
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
              </p>
