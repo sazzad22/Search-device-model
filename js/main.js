@@ -109,9 +109,18 @@ const loadDetails = phoneId => {
 // for displaying details
 const displayDetails = phoneInfo => {
 
-  
+  console.log(phoneInfo);
   const phone = phoneInfo.data;
-  console.log(phone);
+  // console.log(phone.mainFeatures.sensors);
+
+  //sensors
+  const sensors = phone.mainFeatures.sensors;
+  let allSensors = '';
+  for (const sensor of sensors) {
+    allSensors = allSensors + sensor + ',';
+  }
+  allSensors = allSensors + ' etc';
+  console.log(allSensors);
 
     const detailsDiv = document.getElementById("details-div");
 
@@ -152,7 +161,8 @@ const displayDetails = phoneInfo => {
               <span class="text-decoration-underline">Memory</span> : ${phone.mainFeatures.memory ?phone.mainFeatures.memory : 'No detail'}
               <br>
               
-              <p class="card-text" p-5>More Details</p>
+              <p class="card-text">More Details</p>
+              <span class="text-decoration-underline">Sensors</span> : ${allSensors ?allSensors : 'No detail'}
               <br>
 
 
