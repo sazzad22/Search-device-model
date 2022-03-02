@@ -20,7 +20,7 @@ const searchText = () => {
 // for displaying results
 const displayResults = (phones) => {
     
-    // console.log(phones);
+    console.log(phones);
     const resultDiv = document.getElementById('result-div');
 
     //clearing previous results
@@ -30,6 +30,9 @@ const displayResults = (phones) => {
     const limitedPhones = phones.slice(0, 20);
     
     // console.log(limitedPhones);
+  
+  
+    
 
     limitedPhones.forEach((phone) => {
         // console.log(phone.phone_name);
@@ -38,19 +41,19 @@ const displayResults = (phones) => {
 
         const div = document.createElement('div');
 
-        div.classList.add('col');
+        // div.classList.add('col');
 
         div.innerHTML = `
-        <div class="col">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
+        <div class="col p-3">
+          <div class="card p-4 shadow">
+            <img src="${phone.image}" class="card-img-top p-5" alt="...">
             <div class="card-body">
               
-              <h5 class="card-title">${phone.phone_name}</h5>
+              <h6 class="card-title"> ${phone.phone_name}</h6>
               
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"> ${phone.brand}</p>
 
-              <button onclick="loadDetails('${phone.slug}')" type="button" class="btn btn-primary">Primary</button>
+              <button onclick="loadDetails('${phone.slug}')" type="button" class="btn btn-primary">Details</button>
 
             </div>
           </div>
@@ -104,12 +107,14 @@ const displayDetails = phone => {
 
     div.innerHTML = `
     <div class="col-md-4">
-          <img src="..." class="img-fluid rounded-start" alt="...">
+          <img src="${phone.image}" class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">${phone.name}</h5>
             <p class="card-text">
+              <span class="text-decoration-underline">Release Date</span> : ${phone.releaseDate ?phone.releaseDate : 'Release Date Not Found'}
+              <br>
               <span class="text-decoration-underline">Display</span> : is a wider card
               <br>
               <span class="text-decoration-underline">Chipset</span> : is a wider card
@@ -118,8 +123,7 @@ const displayDetails = phone => {
               <br>
               <span class="text-decoration-underline">Memory</span> : is a wider card
               <br>
-              <span class="text-decoration-underline">Release Date</span> : is a wider card
-              <br>
+              
               <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
              </p>
             
